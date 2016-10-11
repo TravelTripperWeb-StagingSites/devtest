@@ -90,7 +90,12 @@ excerpt:
       </div>
     </div>
     <div class="row">
-      {% for item in site.data._models.facilities | sort: "order" %}
+    {% for item in site.data._models.facilities | sort: "order" %}
+      {% assign mod_idx = forloop.index0 | modulo:2 %}
+      {% if mod_idx == 0 %}
+        </div>
+        <div class="row">
+      {% endif %}
         <div class='col-sm-6 col-xs-12 {{ item.name }}' data-live-edit-model='facilities'
 data-live-edit-model-instance='{{item.id}}.json' >
           <h4> {{ item.name }} </h4>
